@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+    environment {
+        INSTAGRAM_MILE="@milenario"
+    }
+    stages {
+        stage("Saludo 1") {
+            steps {
+                echo "Hola desde Saludo 1"
+            }
+        
+        }
+        stage("Saludo 2") {
+            steps {
+                echo "Hola desde Saludo 2, paso 1"
+                echo "Hola desde Saludo 2, paso 2"
+            }
+        }
+        stage("Imprimir variable de entorno") {
+            steps {
+                echo "Este es mi Instagram ${env.INSTAGRAM_MILE}"
+                echo "Este es mi Instagram ${INSTAGRAM_MILE}"
+                echo "Este es mi Instagram $INSTAGRAM_MILE"
+                
+                sh "echo 'hola-mundo'"
+                
+                sh "echo '${env.INSTAGRAM_MILE}'"
+                sh "echo '${INSTAGRAM_MILE}'"
+            }
+        }    
+    }
+    
+}
